@@ -1,0 +1,933 @@
+/* Onboarding Styles - Redesigned to match Dashboard theme */
+:root {
+  /* Colors to match Dashboard.css */
+  --primary-color: #e94a8c; /* Bright pink from the image */
+  --primary-dark: #d83b7d; /* Slightly darker pink */
+  --primary-light: #f173a6; /* Lighter pink */
+  --accent-color: #8a4ddb; /* Purple from the gradient */
+  --text-color: #333;
+  --light-text: #fff;
+  --grey-bg: #f5f5f5;
+  --border-color: #ddd;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.onboarding-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #edf2f7 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.onboarding-content {
+  max-width: 900px;
+  width: 90%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  padding: 40px;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative gradient in corner */
+.onboarding-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 100%);
+  opacity: 0.1;
+  border-radius: 0 16px 0 180px;
+  z-index: 0;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.onboarding-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.onboarding-title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 80px;
+  margin: 16px auto;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+
+.onboarding-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Onboarding progress indicator */
+.progress-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: relative;
+}
+
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--border-color);
+}
+
+.progress-step.active:not(:last-child)::after {
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+}
+
+.progress-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+  z-index: 2;
+}
+
+.progress-step.active .progress-circle {
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border: none;
+  color: white;
+}
+
+.progress-step.completed .progress-circle {
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border: none;
+  color: white;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.progress-step.active .progress-label {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Role Selection */
+.roles-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  margin: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.role-card {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.role-card.selected {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.05);
+}
+
+.role-card.selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.role-icon {
+  margin: 0 auto 20px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.1);
+  border-radius: 50%;
+}
+
+.role-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+.role-description {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* Purpose Selection */
+.selection-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.purpose-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.purpose-option {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.purpose-option:hover {
+  background-color: #f9fafb;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.purpose-option.selected {
+  border-color: var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.05);
+  color: var(--primary-color);
+}
+
+.purpose-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.custom-input-container {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.custom-purpose-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.custom-purpose-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+}
+
+/* Form styles */
+.form-container {
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+  outline: none;
+}
+
+/* Navigation Buttons */
+.onboarding-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.onboarding-button {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(138, 77, 219, 0.1);
+}
+
+.onboarding-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(138, 77, 219, 0.2);
+}
+
+.onboarding-button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 16px;
+}
+
+.back-button:hover {
+  color: var(--primary-color);
+}
+
+/* Plan selection */
+.plan-container {
+  display: flex;
+  gap: 24px;
+  margin: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card {
+  flex: 1;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 32px 24px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.plan-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.plan-card.selected {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.05);
+}
+
+.plan-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.plan-features {
+  margin: 24px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.plan-features li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+}
+
+.plan-features li::before {
+  content: "✓";
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.plan-recommendation {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+/* Account Setup */
+.account-setup-container {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background-color: white;
+  padding: 0 8px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+/* Team invitation */
+.team-invite-container {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.invite-input-group {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.invite-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.invite-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+  outline: none;
+}
+
+.invite-button {
+  padding: 12px 24px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.invite-button:hover {
+  box-shadow: 0 4px 6px rgba(138, 77, 219, 0.1);
+}
+
+.invited-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.invited-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.invited-email {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.invited-status {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.remove-invite {
+  background: none;
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+}
+
+/* Success screen */
+.success-container {
+  text-align: center;
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: var(--success-color);
+  margin-bottom: 24px;
+}
+
+.success-message {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.success-description {
+  color: #6b7280;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .roles-container,
+  .plan-container {
+    flex-direction: column;
+  }
+  
+  .onboarding-navigation {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  
+  .onboarding-button,
+  .back-button {
+    width: 100%;
+  }
+  
+  .progress-container {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 16px;
+  }
+  
+  .progress-step {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .onboarding-content {
+    padding: 24px;
+  }
+  
+  .onboarding-title {
+    font-size: 1.75rem;
+  }
+  
+  .onboarding-subtitle {
+    font-size: 1rem;
+  }
+  
+  .role-card,
+  .plan-card {
+    padding: 24px 16px;
+  }
+}
+
+/* Add these styles to your existing Onboarding.css file */
+
+/* Vertical option cards for role selection (similar to the first image you provided) */
+.purpose-options-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 40px 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.purpose-option-card {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+}
+
+.purpose-option-card:hover {
+  background-color: #f9fafb;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.purpose-option-card.selected {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.05);
+}
+
+.purpose-icon-container {
+  margin-right: 16px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.purpose-option-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.purpose-option-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.purpose-option-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Add these styles to your Onboarding.css file for the Purpose Selection grid layout */
+
+/* Purpose Selection - Grid Layout */
+.purpose-content {
+  max-width: 800px;
+}
+
+.work-type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 32px 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.work-type-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #f9fafb;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.work-type-item:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.work-type-item.selected {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.05);
+}
+
+.work-type-icon {
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.work-type-label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Update navigation buttons to match image style */
+.back-button-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button-circle:hover {
+  background-color: #f9fafb;
+  color: var(--text-color);
+}
+
+.continue-button {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #60a5fa;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.continue-button svg {
+  margin-left: 8px;
+}
+
+.continue-button:hover {
+  background-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.continue-button.disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.onboarding-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .work-type-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add these styles to your Onboarding.css file for the referral source section */
+
+/* Referral Source Section */
+.referral-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.referral-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.referral-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.referral-option {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  background-color: #f9fafb;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.referral-option:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.referral-option.selected {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.05);
+}
+
+.referral-icon {
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  width: 24px;
+}
+
+.referral-label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.done-button {
+  background-color: #2563eb;
+  min-width: 100px;
+}
+
+.done-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 640px) {
+  .referral-title {
+    font-size: 1.25rem;
+  }
+  
+  .referral-option {
+    padding: 12px 14px;
+  }
+}

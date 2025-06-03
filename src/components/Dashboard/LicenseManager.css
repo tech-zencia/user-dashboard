@@ -1,0 +1,794 @@
+/* LicenseManager.css - Complete Updated Version */
+:root {
+  /* Colors from Dashboard.css */
+  --primary-color: #e94a8c; /* Bright pink from the image */
+  --primary-dark: #d83b7d; /* Slightly darker pink */
+  --primary-light: #f173a6; /* Lighter pink */
+  --accent-color: #8a4ddb; /* Purple from the gradient */
+  --text-color: #333;
+  --light-text: #fff;
+  --grey-bg: #f5f5f5;
+  --border-color: #ddd;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Main License Manager Layout */
+.license-manager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.5rem; /* Larger title */
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 24px; /* More space below title */
+}
+
+/* Messages */
+.success-message, .error-message {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.success-message {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid var(--success-color);
+  color: #2e7d32;
+}
+
+.error-message {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--error-color);
+  color: #d32f2f;
+}
+
+/* License Generation Form */
+.license-generation-section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 32px; /* Increased padding */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 32px; /* Add more space below */
+}
+
+.license-generation-section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Form layout and structure */
+.license-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Increased gap between rows */
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px; /* Increased gap between fields */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Slight increase */
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6b7280; /* Lighter label color */
+  margin-bottom: 4px;
+}
+
+/* Form fields styling */
+.form-group input, .form-group select, .form-group textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: white; /* White background for inputs */
+  color: var(--text-color);
+  width: 100%;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: #9ca3af; /* Lighter placeholder text color */
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+}
+
+/* Style for select dropdowns */
+.form-group select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%236b7280" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* Auto-fill indicator styling */
+.auto-filled {
+  position: relative;
+}
+
+.auto-filled::after {
+  content: "Auto-filled";
+  position: absolute;
+  right: 10px;
+  top: -18px;
+  font-size: 0.7rem;
+  color: var(--primary-color);
+  background-color: rgba(233, 74, 140, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Submit button styling */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.primary-button {
+  padding: 12px 24px; /* Larger button */
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(233, 74, 140, 0.2);
+}
+
+.primary-button:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(233, 74, 140, 0.3);
+}
+
+/* Generated License Box */
+.generated-license-box {
+  background-color: rgba(233, 74, 140, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.generated-license-box h3 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.license-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* License key section */
+.license-key-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.license-key-section label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.license-key-display {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.license-key-display code {
+  font-family: monospace;
+  font-size: 0.9rem;
+  flex: 1;
+  word-break: break-all; /* Break long license keys */
+  white-space: normal; /* Allow text to wrap */
+  line-height: 1.5; /* Better line spacing */
+  display: block;
+  padding: 10px 0;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.copy-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.copy-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="%23333" d="M7 4V2h10v2h3.007c.548 0 .993.445.993.993v16.014a.994.994 0 0 1-.993.993H3.993A.994.994 0 0 1 3 21.007V4.993C3 4.445 3.445 4 3.993 4H7zm0 2H5v14h14V6h-2v2H7V6zm2-2v2h6V4H9z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* License info grid - fixed to prevent overlapping */
+.license-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.license-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  word-break: break-word; /* Allow long text to break */
+  overflow: hidden; /* Hide overflow */
+}
+
+.license-info-item label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  white-space: nowrap; /* Keep labels on one line */
+}
+
+.license-info-item span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  overflow-wrap: break-word; /* Allow long words to break */
+  max-width: 100%; /* Ensure text doesn't overflow the container */
+}
+
+/* Fix for ID/date fields that might be too long */
+.license-info-item[data-field="hardwareId"],
+.license-info-item[data-field="licenseId"] {
+  word-break: break-all;
+}
+
+.license-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* License List Section */
+.licenses-list-section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.licenses-list-section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* License filters */
+.license-filters {
+  display: flex;
+  gap: 12px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 8px 16px 8px 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+  font-size: 0.9rem;
+  width: 200px;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.search-input:focus {
+  width: 250px;
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="%23777" d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.8673.132 7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.filter-container {
+  min-width: 140px;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: 100%;
+  appearance: none;
+  background-color: white;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 28px;
+}
+
+.filter-select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+}
+
+/* Licenses Table */
+.licenses-table-container {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.licenses-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.licenses-table thead {
+  background-color: #f9fafc;
+}
+
+.licenses-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.licenses-table td {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f0f0f0;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.licenses-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.license-id {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Status and tier badges */
+.status-badge, .tier-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+.status-badge.expired {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #d32f2f;
+}
+
+.status-badge.revoked {
+  background-color: rgba(97, 97, 97, 0.1);
+  color: #616161;
+}
+
+.tier-badge.basic {
+  background-color: rgba(96, 125, 139, 0.1);
+  color: #546e7a;
+}
+
+.tier-badge.premium {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1976d2;
+}
+
+.tier-badge.professional {
+  background-color: rgba(156, 39, 176, 0.1);
+  color: #7b1fa2;
+}
+
+.tier-badge.enterprise {
+  background-color: rgba(233, 74, 140, 0.1);
+  color: var(--primary-color);
+}
+
+/* Action buttons */
+.license-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.action-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.action-button:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.license-actions .primary-button {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.view-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="%23333" d="M12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.819-9C2.121 6.88 6.608 3 12 3zm0 16a9.005 9.005 0 0 0 8.777-7 9.005 9.005 0 0 0-17.554 0A9.005 9.005 0 0 0 12 19zm0-2.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.revoke-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path fill="%23f44336" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-9.414l2.828-2.829 1.415 1.415L13.414 12l2.829 2.828-1.415 1.415L12 13.414l-2.828 2.829-1.415-1.415L10.586 12 7.757 9.172l1.415-1.415L12 10.586z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.no-results {
+  text-align: center;
+  color: #6b7280;
+  padding: 20px 0;
+}
+
+/* License Details Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  width: 95%;
+  max-width: 700px; /* Increased max width */
+  max-height: 95vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.modal-close:hover {
+  color: var(--primary-color);
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* License verification section */
+.verification-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.verification-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.verification-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: white;
+}
+
+.verification-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 74, 140, 0.1);
+}
+
+.verification-result {
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.verification-valid {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid var(--success-color);
+}
+
+.verification-invalid {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--error-color);
+}
+
+/* Tabs styling for reactivation requests */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  color: var(--primary-color);
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 500;
+}
+
+.tab-content {
+  min-height: 200px;
+}
+
+/* Loading spinner container */
+.loading-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Spacing for the reactivation section */
+.reactivation-section {
+  margin-top: 30px;
+}
+
+/* Animation for license generation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 4px;
+}
+
+.pagination-button {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover {
+  background-color: #f5f5f5;
+}
+
+.pagination-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.pagination-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .license-filters {
+    width: 100%;
+  }
+  
+  .search-input, .search-input:focus {
+    width: 100%;
+  }
+  
+  .filter-container {
+    flex: 1;
+  }
+  
+  .licenses-table td, .licenses-table th {
+    padding: 10px;
+  }
+  
+  .license-info-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .generated-license-box {
+    padding: 15px;
+  }
+  
+  .tabs {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  
+  .tab-button {
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+  }
+  
+  .tab-button.active {
+    border-left: 3px solid var(--primary-color);
+    border-bottom-color: var(--border-color);
+    padding-left: 13px;
+  }
+}
+
+/* Add this to your LicenseManager.css file */
+.form-group select option[disabled] {
+  color: #999;
+  font-style: italic;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  background-color: var(--primary-light);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
