@@ -1,7 +1,7 @@
 // ticketApiService.js - API service for ticket-related operations (Online only)
 
 // Use the full backend URL
-const API_BASE_URL = 'http://user-dashboard-env-1.eba-jcgmztt6.eu-north-1.elasticbeanstalk.com/api';
+const API_BASE_URL = 'https://user-dashboard-env-1.eba-jcgmztt6.eu-north-1.elasticbeanstalk.com/api';
 
 /**
  * Helper function to make API requests with authentication
