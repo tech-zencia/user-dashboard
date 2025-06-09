@@ -1,0 +1,92 @@
+/* File: src/components/common/LoadingOverlay.css */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Morphing Dots Animation */
+.morphing-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.morphing-dots div {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(45deg, #e94a8c, #8a4ddb);
+  border-radius: 50%;
+  animation: morph 1.4s ease-in-out infinite both;
+}
+
+.morphing-dots div:nth-child(1) { 
+  animation-delay: -0.32s; 
+}
+
+.morphing-dots div:nth-child(2) { 
+  animation-delay: -0.16s; 
+}
+
+.morphing-dots div:nth-child(3) { 
+  animation-delay: 0s; 
+}
+
+@keyframes morph {
+  0%, 80%, 100% {
+    transform: scale(0.3);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loading-message {
+  color: #a0aec0;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .morphing-dots div {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .loading-message {
+    font-size: 0.9rem;
+  }
+}
